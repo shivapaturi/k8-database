@@ -76,7 +76,6 @@ data:
 ---
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: frontend
   namespace: roboshop
@@ -88,7 +87,6 @@ metadata:
 
 spec:
   replicas: 1
-
   # These labels are used by ReplicaSet to select Pods.
   # They must match the Pod template labels.
   selector:
@@ -104,7 +102,6 @@ spec:
         component: frontend
         project: roboshop
         tier: web
-
     spec:
       containers:
         - name: frontend
@@ -121,13 +118,13 @@ spec:
             mountPath: /etc/nginx/nginx.conf
             subPath: nginx-conf
             readOnly: true
-    volumes:
-        - name: nginx-conf
-          configMap:
-            name: nginx-conf
-            items:
-              - key: nginx.conf
-                path: nginx.conf
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: nginx-conf
+          items:
+          - key: nginx.conf
+            path: nginx.conf
 ---
 apiVersion: v1
 kind: Service
