@@ -43,11 +43,12 @@ spec:
         - name: catalogue
           image: shivapaturi01/catalogue:v1
           resources:
-            cpu: "50m"
-            memory: "128Mi"
-          limits:
-            cpu: "100m"
-            memory: "256Mi"
+            requests:
+              cpu: "50m"
+              memory: "128Mi"
+            limits:
+              cpu: "100m"
+              memory: "256Mi"
           envFrom:
           - configMapRef:
               name: catalogue
